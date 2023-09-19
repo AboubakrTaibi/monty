@@ -1,6 +1,7 @@
 #include "monty.h"
 #include <stdio.h>
 #include <string.h>
+
 /**
  * strtok_alloc - Tokenizes a given string based on space delemitor (" ")
  *				 and allocates memory for tokens
@@ -13,18 +14,10 @@
 char **strtok_alloc(char *line, ssize_t read)
 {
 	int c = 0, i;
-	char *tok_cpy, *tok = NULL, **args, *line2;
+	char *tok_cpy, *tok = NULL, **arguments, *line2;
 (void)read;
-/* 	if (read == -1)
-	{
-		if (line)
-			free(line);
-		p_err_getline();
-	}
-	if (read > 0 && line[read - 1] == '\n')
-		line[read - 1] = '\0';
- */
-printf("test in strtock alloc\n");
+	if (line[strlen(line) - 1] == '\n')
+		line[strlen(line) - 1] = '\0';
 	line2 = _strdup(line);
 	if (line2 == NULL)
 	{   _puts_std(2, "Error: malloc failed");
@@ -35,10 +28,10 @@ printf("test in strtock alloc\n");
 	tok_cpy = tok;
 	for (c = 0; tok; c++)
 		tok = strtok(NULL, " ");
-	
+
 	free(line2);
-	args = (char **)malloc(sizeof(char *) * (c + 1));
-	if (args == NULL)
+	arguments = (char **)malloc(sizeof(char *) * (c + 1));
+	if (arguments == NULL)
 	{   _puts_std(2, "Error: malloc failed");
 		free(line);
 		exit(EXIT_FAILURE);
@@ -46,13 +39,13 @@ printf("test in strtock alloc\n");
 	tok_cpy = strtok(line, " ");
 	for (i = 0; tok_cpy; i++)
 	{
-		args[i] = tok_cpy;
+		arguments[i] = tok_cpy;
 		tok_cpy = strtok(NULL, " ");
 	}
-	args[i] = NULL;
+	arguments[i] = NULL;
 
-	if (args[0] == NULL)
-	{free(args);
+	if (arguments[0] == NULL)
+	{free(arguments);
 	return (NULL); }
-	return (args);
+	return (arguments);
 }
