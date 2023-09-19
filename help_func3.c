@@ -22,7 +22,7 @@ int _puts_std(int std, char *str)
  */
 void print_error(int line_number, char *err_msg, char *opcode)
 {
-	write(2, "L", 2);
+	write(2, "L", 1);
 	print_number(2, line_number);
 	_puts_std(2, err_msg);
 
