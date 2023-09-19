@@ -50,6 +50,11 @@ int _slen(char *s);
 int p_err_getline(void);
 void p_err_write(int w);
 void print_error(int line_number, char *err_msg, char *opcode);
+void execute_opcode(stack_t **stack, char *opcode, unsigned int line_number);
+void push_func(stack_t **stack, unsigned int line_number);
+void pall_func(stack_t **stack, unsigned int line_number);
+void pint_func(stack_t **stack, unsigned int line_number);
+void pop_func(stack_t **stack, unsigned int line_number);
 
 
 #endif /* MONTY_H */
