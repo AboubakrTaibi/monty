@@ -1,6 +1,4 @@
 #include "monty.h"
-#include <stdio.h>
-#include <string.h>
 
 globals_var vars;
 
@@ -45,11 +43,14 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE); }
 
 	while (fgets(line, sizeof(line), vars.o_opfile) != NULL)
-	{
-		line_count++;
+	{   line_count++;
 		vars.args = strtok_alloc(line, read);
-		if (!vars.args || vars.args[0][0] == '#')
-			continue;
+		if (!vars.args || vars.args[0][0] == '#' ||
+		(strcmp(vars.args[0], "nop") == 0))
+			{
+			if (vars.args)
+			free(vars.args);
+			continue; }
 		if (strcmp(vars.args[0], "push") == 0)
 			vars.number = _atoi(vars.args[1], stack, line_count);
 

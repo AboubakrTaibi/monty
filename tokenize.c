@@ -21,7 +21,7 @@ char **strtok_alloc(char *line, ssize_t read)
 	line2 = _strdup(line);
 	if (line2 == NULL)
 	{   _puts_std(2, "Error: malloc failed");
-		free(line);
+		closefile(vars.o_opfile);
 		exit(EXIT_FAILURE); }
 
 	tok = strtok(line2, " ");
@@ -33,7 +33,7 @@ char **strtok_alloc(char *line, ssize_t read)
 	arguments = (char **)malloc(sizeof(char *) * (c + 1));
 	if (arguments == NULL)
 	{   _puts_std(2, "Error: malloc failed");
-		free(line);
+		closefile(vars.o_opfile);
 		exit(EXIT_FAILURE);
 	}
 	tok_cpy = strtok(line, " ");
