@@ -54,7 +54,7 @@ int _atoi(char *s)
 		if (s[i] >= '0' && s[i] <= '9')
 			n = n * 10 + (s[i] - '0');
 		else
-			return (-1);
+			return (0);
 	}
 	return (n);
 }
@@ -111,4 +111,3 @@ char *_strcat(char *dest, char *src)
 	*dest = '\0';
 	return (p_dest);
 }
-

@@ -44,6 +44,7 @@ void closefile(FILE *file);
 char **strtok_alloc(char *line, ssize_t read);
 void print_number(int std, int n);
 int _puts(char *c);
+int _atoi(char *s);
 int _puts_std(int std, char *str);
 int _slen(char *s);
 int p_err_getline(void);
