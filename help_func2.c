@@ -40,23 +40,36 @@ int _strncmp(char *s1, char *s2, int n)
 
 /**
  * *_atoi - convert a string to an integer
- * @s: pointer to a string
+ * @argument: pointer to a instruction
+ * @stack: pointer to stack list
+ * @line_count: number of line in file
  * Return: an integer
  */
-int _atoi(char *s)
+int _atoi(char *argument, stack_t *stack, int line_count)
 {
-	int i = 0, n = 0;
+	int i = 0, n = 0, neg = 1;
 
-	if (s == NULL)
-		return (0);
-	for (i = 0; s[i]; i++)
+	if (!argument)
+	{ print_error(line_count, ": usage: push integer", NULL);
+		free(vars.args);
+		free_stack(stack);
+		closefile(vars.o_opfile);
+		exit(EXIT_FAILURE); }
+	if (argument[0] == '-')
+	{i++;
+		neg = -1; }
+	for (; argument[i]; i++)
 	{
-		if (s[i] >= '0' && s[i] <= '9')
-			n = n * 10 + (s[i] - '0');
+		if (argument[i] >= '0' && argument[i] <= '9')
+			n = n * 10 + (argument[i] - '0');
 		else
-			return (0);
+		{ print_error(line_count, ": usage: push integer", NULL);
+			free(vars.args);
+			free_stack(stack);
+			closefile(vars.o_opfile);
+			exit(EXIT_FAILURE); }
 	}
-	return (n);
+	return (n * neg);
 }
 
 /**
