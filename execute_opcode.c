@@ -43,6 +43,7 @@ void push_func(stack_t **stack,  unsigned int line_number)
 	if (!node)
 	{   _puts_std(2, "Error: malloc failed");
 		free(vars.args);
+		closefile(vars.o_opfile);
 		exit(EXIT_FAILURE); }
 	node->n = vars.number;
 	node->prev = NULL;
@@ -81,9 +82,17 @@ void pall_func(stack_t **stack, unsigned int line_number)
  */
 void pint_func(stack_t **stack, unsigned int line_number)
 {
-	(void)stack;
-	(void)line_number;
-	printf("in pint function\n");
+
+	if (stack == NULL)
+		exit(EXIT_FAILURE);
+
+	if (!(*stack))
+		{  print_error(line_number, ": can't pint, stack empty", NULL);
+		free(vars.args);
+		closefile(vars.o_opfile);
+		exit(EXIT_FAILURE); }
+	if ((*stack))
+		printf("%d\n", (*stack)->n);
 }
 
 /**
@@ -93,8 +102,25 @@ void pint_func(stack_t **stack, unsigned int line_number)
  */
 void pop_func(stack_t **stack, unsigned int line_number)
 {
-	(void)stack;
-	(void)line_number;
-	printf("in pop function\n");
+	stack_t *tmp;
+
+	if (stack == NULL)
+		exit(EXIT_FAILURE);
+	else if (!(*stack))
+		{  print_error(line_number, ": can't pop an empty stack", NULL);
+		free(vars.args);
+		closefile(vars.o_opfile);
+		exit(EXIT_FAILURE); }
+	else if (!(*stack)->next)
+	{	free((*stack));
+		(*stack) = NULL;
+	}
+	else
+	{ (*stack)->next->prev = NULL;
+	tmp = (*stack);
+	(*stack) = (*stack)->next;
+	free(tmp);
+
+	}
 
 }
