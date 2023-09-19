@@ -19,7 +19,10 @@ i++;
 
 pdupstr = (char *)malloc((i + 1) * sizeof(char));
 if (pdupstr == NULL)
-return (NULL);
+{   _puts_std(2, "Error: malloc failed");
+		free(vars.args);
+		closefile(vars.o_opfile);
+		exit(EXIT_FAILURE); }
 
 for (i = 0; str[i]; i++)
 pdupstr[i] = str[i];
