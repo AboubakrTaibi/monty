@@ -40,7 +40,7 @@ void push_func(stack_t **stack,  unsigned int line_number)
 	if (stack == NULL)
 		exit(EXIT_FAILURE);
 	node = malloc(sizeof(stack_t));
-	if (!node)
+	if (node == NULL)
 	{   _puts_std(2, "Error: malloc failed");
 		free(vars.args);
 		closefile(vars.o_opfile);
