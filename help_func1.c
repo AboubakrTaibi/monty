@@ -89,10 +89,12 @@ int _puts_std(int std, char *str)
  * @err_msg: Error message to be displayed
  * @line_number: a count associated with the current instruction line
  */
-void print_error(int line_number, char *err_msg)
+void print_error(int line_number, char *err_msg, char *opcode)
 {
 write(2, "L", 2);
 print_number(2, line_number);
 _puts_std(2, err_msg);
 write(2, "\n", 1);
+if (opcode)
+_puts_std(2, opcode);
 }
