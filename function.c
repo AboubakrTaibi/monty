@@ -27,7 +27,8 @@ FILE *o_opfile;
 char  *opfile, *line = NULL, **args;
 size_t len = 0;
 ssize_t read;
-int line_count = 0;
+int line_count = 0, i;
+stack_t *stack;
 
 if (argc != 2)
 { dprintf(STDERR_FILENO, "USAGE: monty file\n");
@@ -39,14 +40,25 @@ if (o_opfile == NULL)
 { dprintf(STDERR_FILENO, "Error: Can't open file %s\n", opfile);
 exit(EXIT_FAILURE); }
 
-
 while ((read = getline(&line, &len, o_opfile)) != -1)
 {
 line_count++;
 args = strtok_alloc(line, read);
-if (!args)
-        continue;
+if (!args || args[0][0] == '#')
+    continue;
+if (strcmp(args[0], "push") == 0)
+{
+if (!args[1] || !_atoi(args[1]))
+    { print_error(line_count, ": usage: push integer", NULL);
+    free(args);
+    free(line);
+    exit(EXIT_FAILURE); }
+
+}
+
+execute_opcode(&stack, args[0], line_count);
 free(line);
+free(args);
 line = NULL;
 }
 free(line);
