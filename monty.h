@@ -4,10 +4,10 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
-#include <string.h>
 #include <errno.h>
+#include <fcntl.h> 
+#include <string.h>
 
-#define BUF_SIZE 1024
 
 
 /**
@@ -55,6 +55,7 @@ void push_func(stack_t **stack, unsigned int line_number);
 void pall_func(stack_t **stack, unsigned int line_number);
 void pint_func(stack_t **stack, unsigned int line_number);
 void pop_func(stack_t **stack, unsigned int line_number);
+char *_strdup(const char *str);
 
 
 #endif /* MONTY_H */

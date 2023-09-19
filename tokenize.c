@@ -1,4 +1,6 @@
 #include "monty.h"
+#include <stdio.h>
+#include <string.h>
 /**
  * strtok_alloc - Tokenizes a given string based on space delemitor (" ")
  *				 and allocates memory for tokens
@@ -12,8 +14,8 @@ char **strtok_alloc(char *line, ssize_t read)
 {
 	int c = 0, i;
 	char *tok_cpy, *tok = NULL, **args, *line2;
-
-	if (read == -1)
+(void)read;
+/* 	if (read == -1)
 	{
 		if (line)
 			free(line);
@@ -21,8 +23,9 @@ char **strtok_alloc(char *line, ssize_t read)
 	}
 	if (read > 0 && line[read - 1] == '\n')
 		line[read - 1] = '\0';
-
-	line2 = strdup(line);
+ */
+printf("test in strtock alloc\n");
+	line2 = _strdup(line);
 	if (line2 == NULL)
 	{   _puts_std(2, "Error: malloc failed");
 		free(line);

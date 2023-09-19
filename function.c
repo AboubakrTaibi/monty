@@ -1,5 +1,6 @@
 #include "monty.h"
-
+#include <stdio.h>
+#include <string.h>
 /**
  * closefile - function that close file stream.
  * @file: file to close
@@ -10,7 +11,7 @@ void closefile(FILE *file)
 
 if (fclose(file) == EOF)
 {
-dprintf(STDERR_FILENO, "Error: Can't close file\n");
+fprintf(stderr, "Error: Can't close file\n");
 exit(EXIT_FAILURE);
 }
 
@@ -26,23 +27,22 @@ int main(int argc, char *argv[])
 
 FILE *o_opfile;
 char  *opfile, *line = NULL, **args;
-size_t len = 0;
-ssize_t read;
+ssize_t read = 0;
 int line_count = 0, i;
 stack_t *stack;
 (void)i;
 
 if (argc != 2)
-{ dprintf(STDERR_FILENO, "USAGE: monty file\n");
+{ fprintf(stderr, "USAGE: monty file\n");
 exit(EXIT_FAILURE); }
 
 opfile = argv[1];
 o_opfile = fopen(opfile, "r");
 if (o_opfile == NULL)
-{ dprintf(STDERR_FILENO, "Error: Can't open file %s\n", opfile);
+{ fprintf(stderr, "Error: Can't open file %s\n", opfile);
 exit(EXIT_FAILURE); }
 
-while ((read = getline(&line, &len, o_opfile)) != -1)
+while (fgets(line, 100, o_opfile) != NULL)
 {
 line_count++;
 args = strtok_alloc(line, read);
