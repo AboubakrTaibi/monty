@@ -23,12 +23,14 @@ exit(EXIT_FAILURE);
   */
 int main(int argc, char *argv[])
 {
+
 FILE *o_opfile;
 char  *opfile, *line = NULL, **args;
 size_t len = 0;
 ssize_t read;
 int line_count = 0, i;
 stack_t *stack;
+(void)i;
 
 if (argc != 2)
 { dprintf(STDERR_FILENO, "USAGE: monty file\n");

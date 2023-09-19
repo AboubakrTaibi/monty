@@ -3,6 +3,7 @@
 void execute_opcode(stack_t **stack, char *opcode, unsigned int line_number)
 {
 	int i;
+
     instruction_t instructions[] = {
         {"push", push_func},
         {"pall", pall_func},
@@ -25,20 +26,28 @@ void execute_opcode(stack_t **stack, char *opcode, unsigned int line_number)
 
 void push_func(stack_t **stack, unsigned int line_number)
 {
+	(void)stack;
+	(void)line_number;
     printf("in push function\n");
 
 }
 void pall_func(stack_t **stack, unsigned int line_number)
 {
+	(void)stack;
+	(void)line_number;
     printf("in pall function\n");
 
 }
 void pint_func(stack_t **stack, unsigned int line_number)
 {
+	(void)stack;
+	(void)line_number;
     printf("in pint function\n");
 }
 void pop_func(stack_t **stack, unsigned int line_number)
 {
+	(void)stack;
+	(void)line_number;
     printf("in pop function\n");
 
 }
