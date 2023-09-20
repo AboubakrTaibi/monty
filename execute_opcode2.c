@@ -8,14 +8,14 @@
 void add_func(stack_t **stack,  unsigned int line_number)
 {
 
-if (stack == NULL)
-	exit(EXIT_FAILURE);
-if (!(*stack) || !((*stack)->next))
+	if (stack == NULL)
+		exit(EXIT_FAILURE);
+	if (!(*stack) || !((*stack)->next))
 	{ fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
-	free_all(stack);
-	exit(EXIT_FAILURE); }
-(*stack)->next->n += (*stack)->n;
-pop_func(stack, line_number);
+		free_all(stack);
+		exit(EXIT_FAILURE); }
+	(*stack)->next->n += (*stack)->n;
+	pop_func(stack, line_number);
 }
 /**
  * div_func - function that divides the second top element of the stack by
@@ -26,22 +26,22 @@ pop_func(stack, line_number);
 void div_func(stack_t **stack,  unsigned int line_number)
 {
 
-if (stack == NULL)
-	exit(EXIT_FAILURE);
-else if (!(*stack) || !((*stack)->next))
+	if (stack == NULL)
+		exit(EXIT_FAILURE);
+	else if (!(*stack) || !((*stack)->next))
 	{ fprintf(stderr, "L%d: can't div, stack too short\n", line_number);
-	free_all(stack);
-	exit(EXIT_FAILURE); }
+		free_all(stack);
+		exit(EXIT_FAILURE); }
 
-else if (!(*stack)->n)
+	else if (!(*stack)->n)
 	{ fprintf(stderr, "L%d: division by zero\n", line_number);
-	free_all(stack);
-	exit(EXIT_FAILURE); }
-else
-{
-(*stack)->next->n /= (*stack)->n;
-pop_func(stack, line_number);
-}
+		free_all(stack);
+		exit(EXIT_FAILURE); }
+	else
+	{
+		(*stack)->next->n /= (*stack)->n;
+		pop_func(stack, line_number);
+	}
 }
 
 /**
@@ -73,3 +73,55 @@ void mod_func(stack_t **stack,  unsigned int line_number)
 	}
 }
 
+/**
+ * pchar_func - function that prints the char at the top of the stack,
+ * followed by a new line.
+ * @stack: pointer to stack list
+ * @line_number: number of line in file
+ */
+void pchar_func(stack_t **stack, unsigned int line_number)
+{
+
+	if (stack == NULL)
+		exit(EXIT_FAILURE);
+	else if (!(*stack))
+	{
+		fprintf(stderr, "L%d: can't pchar, stack empty\n", line_number);
+		free_all(stack);
+		exit(EXIT_FAILURE);
+	}
+	else
+	{
+		if ((*stack) && (*stack)->n < 0 && (*stack)->n > 255)
+		{
+			fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
+			free_all(stack);
+			exit(EXIT_FAILURE);
+		}
+		__putchar((*stack)->n);
+		printf("\n");
+	}
+}
+
+/**
+ * pstr_func - function that prints the char at the top of the stack,
+ * followed by a new line
+ * @stack: pointer to stack list
+ * @line_number: number of line in file
+ */
+void pstr_func(stack_t **stack, unsigned int line_number)
+{
+
+	stack_t *tmp;
+
+	(void)line_number;
+	if (stack == NULL)
+		exit(EXIT_FAILURE);
+	else if ((*stack))
+	{
+		tmp = *stack;
+		for (; tmp && tmp->n > 0 && tmp->n <= 255 ; tmp = tmp->next)
+			__putchar(tmp->n);
+	}
+	printf("\n");
+}

@@ -54,7 +54,7 @@ FILE *o_opfile;
 } globals_var;
 
 extern globals_var vars;
-
+int __putchar(char c);
 void closefile(FILE *file);
 char **strtok_alloc(char *line, ssize_t read);
 void print_number(int std, int n);
@@ -76,6 +76,8 @@ void swap_func(stack_t **stack,  unsigned int line_number);
 void mul_func(stack_t **stack, unsigned int line_number);
 void div_func(stack_t **stack,  unsigned int line_number);
 void mod_func(stack_t **stack,  unsigned int line_number);
+void pchar_func(stack_t **stack,  unsigned int line_number);
+void pstr_func(stack_t **stack,  unsigned int line_number);
 
 char *_strdup(const char *str);
 void free_stack(stack_t **stack);

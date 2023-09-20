@@ -20,6 +20,8 @@ void execute_opcode(stack_t **stack, char *opcode, unsigned int line_number)
 		{"mul", mul_func},
 		{"div", div_func},
 		{"mod", mod_func},
+		{"pchar", pchar_func},
+		{"pstr", pstr_func},
 		{NULL, NULL}
 	};
 
