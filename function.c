@@ -61,7 +61,7 @@ while ((read = getline(&line, &len, o_opfile)) != -1)
 		free(line);
 		line = NULL; }
 	if (stack)
-	free_stack(stack);
+	free_stack(&stack);
 	free(line);
 	closefile(vars.o_opfile);
 	return (0);

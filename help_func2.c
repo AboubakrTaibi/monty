@@ -52,7 +52,7 @@ int _atoi(char *argument, stack_t *stack, int line_count)
 	if (!argument)
 	{ print_error(line_count, ": usage: push integer", NULL);
 		free(vars.args);
-		free_stack(stack);
+		free_stack(&stack);
 		closefile(vars.o_opfile);
 		free(vars.line);
 		exit(EXIT_FAILURE); }
@@ -66,7 +66,7 @@ int _atoi(char *argument, stack_t *stack, int line_count)
 		else
 		{ print_error(line_count, ": usage: push integer", NULL);
 			free(vars.args);
-			free_stack(stack);
+			free_stack(&stack);
 			closefile(vars.o_opfile);
 			free(vars.line);
 			exit(EXIT_FAILURE); }

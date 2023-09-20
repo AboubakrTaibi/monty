@@ -45,7 +45,7 @@ typedef struct instruction_s
  *@o_opfile: file stream
  *@line: pointer that conatin line readed from file (used by getline)
  */
-typedef struct global_var
+typedef struct global_var_s
 {
 int number;
 char *line;
@@ -71,7 +71,7 @@ void pall_func(stack_t **stack, unsigned int line_number);
 void pint_func(stack_t **stack, unsigned int line_number);
 void pop_func(stack_t **stack, unsigned int line_number);
 char *_strdup(const char *str);
-void free_stack(stack_t *stack);
+void free_stack(stack_t **stack);
 
 
 
