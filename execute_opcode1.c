@@ -58,6 +58,8 @@ void sub_func(stack_t **stack, unsigned int line_number)
  */
 void mul_func(stack_t **stack, unsigned int line_number)
 {
+	(void)line_number;
+
 	if (stack == NULL)
 		exit(EXIT_FAILURE);
 	if (!(*stack) || !(*stack)->next)
