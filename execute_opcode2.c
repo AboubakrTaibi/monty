@@ -98,7 +98,7 @@ void pchar_func(stack_t **stack, unsigned int line_number)
 			free_all(stack);
 			exit(EXIT_FAILURE);
 		}
-		printf("%c\n",(*stack)->n);
+		printf("%c\n", (*stack)->n);
 	}
 }
 
@@ -119,7 +119,7 @@ void pstr_func(stack_t **stack, unsigned int line_number)
 	else if ((*stack))
 	{
 	for (tmp = *stack; tmp && tmp->n > 0 && tmp->n <= 127 ; tmp = tmp->next)
-		printf("%c",tmp->n);
+		printf("%c", tmp->n);
 	}
 	printf("\n");
 }

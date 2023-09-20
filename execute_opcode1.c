@@ -74,3 +74,29 @@ void mul_func(stack_t **stack, unsigned int line_number)
 		pop_func(stack, line_number);
 	}
 }
+
+
+/**
+ * rotl_func - function that rotates the stack to the top.
+ * @stack: pointer to the top of the stack
+ * @line_number: line number of the instruction
+ */
+void rotl_func(stack_t **stack, unsigned int line_number)
+{
+	int tmp_num;
+	stack_t *tmp;
+	(void)line_number;
+
+	if (stack == NULL)
+	{
+		exit(EXIT_FAILURE);
+	}
+	else if ((*stack) && (*stack)->next)
+	{
+		tmp_num = (*stack)->n;
+		for (tmp = (*stack); tmp->next; tmp = tmp->next)
+			tmp->n = tmp->next->n;
+		tmp->n = tmp_num;
+	}
+
+}
