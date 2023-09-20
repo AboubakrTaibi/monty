@@ -75,6 +75,7 @@ void sub_func(stack_t **stack,  unsigned int line_number);
 void swap_func(stack_t **stack,  unsigned int line_number);
 void mul_func(stack_t **stack, unsigned int line_number);
 void div_func(stack_t **stack,  unsigned int line_number);
+void mod_func(stack_t **stack,  unsigned int line_number);
 
 char *_strdup(const char *str);
 void free_stack(stack_t **stack);
