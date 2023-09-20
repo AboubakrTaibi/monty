@@ -70,8 +70,15 @@ void push_func(stack_t **stack, unsigned int line_number);
 void pall_func(stack_t **stack, unsigned int line_number);
 void pint_func(stack_t **stack, unsigned int line_number);
 void pop_func(stack_t **stack, unsigned int line_number);
+void add_func(stack_t **stack,  unsigned int line_number);
+void sub_func(stack_t **stack,  unsigned int line_number);
+void swap_func(stack_t **stack,  unsigned int line_number);
+void div_func(stack_t **stack,  unsigned int line_number);
+
 char *_strdup(const char *str);
 void free_stack(stack_t **stack);
+void free_all(stack_t **stack);
+
 
 
 
