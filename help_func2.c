@@ -50,7 +50,7 @@ int _atoi(char *argument, stack_t *stack, int line_count)
 	int i = 0, n = 0, neg = 1;
 
 	if (!argument)
-	{	fprintf(stderr, "L%d: usage: push integer", line_count);
+	{	fprintf(stderr, "L%d: usage: push integer\n", line_count);
 		free(vars.args);
 		free_stack(&stack);
 		closefile(vars.o_opfile);
@@ -64,7 +64,7 @@ int _atoi(char *argument, stack_t *stack, int line_count)
 		if (argument[i] >= '0' && argument[i] <= '9')
 			n = n * 10 + (argument[i] - '0');
 		else
-		{ fprintf(stderr, "L%d: usage: push integer", line_count);
+		{ fprintf(stderr, "L%d: usage: push integer\n", line_count);
 			free(vars.args);
 			free_stack(&stack);
 			closefile(vars.o_opfile);

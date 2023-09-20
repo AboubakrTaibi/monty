@@ -46,7 +46,7 @@ void push_func(stack_t **stack,  unsigned int line_number)
 		exit(EXIT_FAILURE);
 	node = malloc(sizeof(stack_t));
 	if (node == NULL)
-	{   fprintf(stderr, "Error: malloc failed");
+	{   fprintf(stderr, "Error: malloc failed\n");
 		free(vars.args);
 		free(vars.line);
 		closefile(vars.o_opfile);
@@ -93,7 +93,7 @@ void pint_func(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 
 	if (!(*stack))
-		{  fprintf(stderr, "L%d: can't pint, stack empty", line_number);
+		{  fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
 		free(vars.args);
 		free(vars.line);
 		closefile(vars.o_opfile);
@@ -114,7 +114,7 @@ void pop_func(stack_t **stack, unsigned int line_number)
 	if (stack == NULL)
 		exit(EXIT_FAILURE);
 	else if (!(*stack))
-		{	fprintf(stderr, "L%d: can't pop an empty stack", line_number);
+		{	fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
 		free(vars.args);
 		free(vars.line);
 		closefile(vars.o_opfile);
