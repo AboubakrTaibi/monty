@@ -14,7 +14,7 @@
 char **strtok_alloc(char *line, ssize_t read)
 {
 	int c = 0, i = 0;
-	char *tok_cpy, *tok = NULL, **arguments, *line2;
+	char *tok_cpy = NULL, *tok = NULL, **arguments = NULL, *line2 = NULL;
 
 
 	if (read > 0 && line[read - 1] == '\n')
