@@ -14,6 +14,9 @@ void execute_opcode(stack_t **stack, char *opcode, unsigned int line_number)
 		{"pall", pall_func},
 		{"pint", pint_func},
 		{"pop", pop_func},
+		{"add", add_func},
+		{"swap", swap_func},
+		{"div", div_func},
 		{NULL, NULL}
 	};
 
