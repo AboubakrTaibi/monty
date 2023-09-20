@@ -100,3 +100,38 @@ void rotl_func(stack_t **stack, unsigned int line_number)
 	}
 
 }
+
+/**
+ * rotr_func - function that rotates the stack to the top.
+ * @stack: pointer to the top of the stack
+ * @line_number: line number of the instruction
+ */
+void rotr_func(stack_t **stack, unsigned int line_number)
+{
+	int last_num;
+	stack_t *tmp;
+
+	(void)line_number;
+
+	if (stack == NULL)
+	{
+		exit(EXIT_FAILURE);
+	}
+	else if ((*stack) && (*stack)->next)
+	{
+		tmp = (*stack);
+		while (tmp->next)
+		{
+			tmp = tmp->next;
+			last_num = tmp->n;
+		}
+
+		while (tmp->prev)
+		{
+			tmp->n = tmp->prev->n;
+			tmp = tmp->prev;
+		}
+
+		(*stack)->n = last_num;
+	}
+}
