@@ -92,7 +92,7 @@ void pchar_func(stack_t **stack, unsigned int line_number)
 	}
 	else
 	{
-		if ((*stack) && (*stack)->n < 0 && (*stack)->n > 255)
+		if ((*stack) && ((*stack)->n < 0 || (*stack)->n > 127))
 		{
 			fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
 			free_all(stack);
@@ -119,9 +119,8 @@ void pstr_func(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	else if ((*stack))
 	{
-		tmp = *stack;
-		for (; tmp && tmp->n > 0 && tmp->n <= 255 ; tmp = tmp->next)
-			__putchar(tmp->n);
+	for (tmp = *stack; tmp && tmp->n > 0 && tmp->n <= 127 ; tmp = tmp->next)
+		__putchar(tmp->n);
 	}
 	printf("\n");
 }
