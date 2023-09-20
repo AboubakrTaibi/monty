@@ -1,6 +1,6 @@
 #include "monty.h"
 
-globals_var vars = {0, NULL, NULL, NULL};
+globals_var vars = {0, NULL, NULL, NULL, 's'};
 
 /**
  * closefile - function that close file stream.
@@ -25,7 +25,6 @@ void closefile(FILE *file)
  */
 int main(int argc, char *argv[])
 {
-
 	char  *opfile = NULL, **args = NULL, *line = NULL;
 	ssize_t read = 0;
 	size_t len = 0;
@@ -36,7 +35,6 @@ int main(int argc, char *argv[])
 	if (argc != 2)
 	{ fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE); }
-
 	opfile = argv[1];
 	o_opfile = fopen(opfile, "r");
 	vars.o_opfile = o_opfile;
@@ -54,15 +52,17 @@ while ((read = getline(&line, &len, o_opfile)) != -1)
 			if (vars.args)
 			free(vars.args);
 			continue; }
+if (strcmp(vars.args[0], "stack") == 0 || strcmp(vars.args[0], "queue") == 0)
+	{ vars.mode = (strcmp(vars.args[0], "stack") == 0) ? 's' : 'q';
+			free(vars.args);
+			continue; }
 		if (strcmp(vars.args[0], "push") == 0)
 			vars.number = _atoi(vars.args[1], stack, line_count);
 		execute_opcode(&stack, vars.args[0], line_count);
-		free(vars.args);
-		free(line);
+		free(vars.args), free(line);
 		line = NULL; }
 	if (stack)
-	free_stack(&stack);
-	free(line);
+	free_stack(&stack), free(line);
 	closefile(vars.o_opfile);
 	return (0);
 }
