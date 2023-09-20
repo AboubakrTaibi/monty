@@ -26,25 +26,27 @@ void closefile(FILE *file)
 int main(int argc, char *argv[])
 {
 
-	char  *opfile, line[BUF_SIZE] = {'\0'};
+	char  *opfile = NULL, **args = NULL, line[BUF_SIZE] = {'\0'};
 	ssize_t read = 0;
-	int line_count = 0, i;
+	FILE *o_opfile = NULL;
+	int line_count = 0;
 	stack_t *stack = NULL;
-	(void)i;
 
 	if (argc != 2)
 	{ fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE); }
 
 	opfile = argv[1];
-	vars.o_opfile = fopen(opfile, "r");
+	o_opfile = fopen(opfile, "r");
+	vars.o_opfile = o_opfile;
 	if (vars.o_opfile == NULL)
 	{ fprintf(stderr, "Error: Can't open file %s\n", opfile);
 		exit(EXIT_FAILURE); }
 
 	while (fgets(line, sizeof(line), vars.o_opfile) != NULL)
 	{   line_count++;
-		vars.args = strtok_alloc(line, read);
+		args = strtok_alloc(line, read);
+		vars.args = args;
 		if (!vars.args || vars.args[0][0] == '#' ||
 		(strcmp(vars.args[0], "nop") == 0))
 			{

@@ -18,16 +18,16 @@ char **strtok_alloc(char *line, ssize_t read)
 (void)read;
 	if (line[strlen(line) - 1] == '\n')
 		line[strlen(line) - 1] = '\0';
-	line2 = _strdup(line);
+	line2 = strdup(line);
 	if (line2 == NULL)
 	{   _puts_std(2, "Error: malloc failed");
 		closefile(vars.o_opfile);
 		exit(EXIT_FAILURE); }
 
-	tok = strtok(line2, " ");
+	tok = strtok(line2, " \t");
 	tok_cpy = tok;
 	for (c = 0; tok; c++)
-		tok = strtok(NULL, " ");
+		tok = strtok(NULL, " \t");
 
 	free(line2);
 	arguments = (char **)malloc(sizeof(char *) * (c + 1));
@@ -36,11 +36,11 @@ char **strtok_alloc(char *line, ssize_t read)
 		closefile(vars.o_opfile);
 		exit(EXIT_FAILURE);
 	}
-	tok_cpy = strtok(line, " ");
+	tok_cpy = strtok(line, " \t");
 	for (i = 0; tok_cpy; i++)
 	{
 		arguments[i] = tok_cpy;
-		tok_cpy = strtok(NULL, " ");
+		tok_cpy = strtok(NULL, " \t");
 	}
 	arguments[i] = NULL;
 
