@@ -79,6 +79,7 @@ void mod_func(stack_t **stack, unsigned int line_number);
 void pchar_func(stack_t **stack, unsigned int line_number);
 void pstr_func(stack_t **stack, unsigned int line_number);
 void rotl_func(stack_t **stack, unsigned int line_number);
+void rotr_func(stack_t **stack, unsigned int line_number);
 
 char *_strdup(const char *str);
 void free_stack(stack_t **stack);
