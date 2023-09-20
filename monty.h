@@ -43,10 +43,12 @@ typedef struct instruction_s
  * @number: integer number to add to stack
  * @args: pointer to pointer
  *@o_opfile: file stream
+ *@line: pointer that conatin line readed from file (used by getline)
  */
 typedef struct global_var
 {
 int number;
+char *line;
 char **args;
 FILE *o_opfile;
 } globals_var;

@@ -26,6 +26,7 @@ void execute_opcode(stack_t **stack, char *opcode, unsigned int line_number)
 		}
 	}
 	print_error(line_number, ": unknown instruction ", opcode);
+	free(vars.line);
 }
 /**
  * push_func - function that add an element into the stack list
@@ -43,6 +44,7 @@ void push_func(stack_t **stack,  unsigned int line_number)
 	if (node == NULL)
 	{   _puts_std(2, "Error: malloc failed");
 		free(vars.args);
+		free(vars.line);
 		closefile(vars.o_opfile);
 		exit(EXIT_FAILURE); }
 	node->n = vars.number;
@@ -89,6 +91,7 @@ void pint_func(stack_t **stack, unsigned int line_number)
 	if (!(*stack))
 		{  print_error(line_number, ": can't pint, stack empty", NULL);
 		free(vars.args);
+		free(vars.line);
 		closefile(vars.o_opfile);
 		exit(EXIT_FAILURE); }
 	if ((*stack))
@@ -109,6 +112,7 @@ void pop_func(stack_t **stack, unsigned int line_number)
 	else if (!(*stack))
 		{  print_error(line_number, ": can't pop an empty stack", NULL);
 		free(vars.args);
+		free(vars.line);
 		closefile(vars.o_opfile);
 		exit(EXIT_FAILURE); }
 	else if (!(*stack)->next)

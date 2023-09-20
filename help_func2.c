@@ -54,6 +54,7 @@ int _atoi(char *argument, stack_t *stack, int line_count)
 		free(vars.args);
 		free_stack(stack);
 		closefile(vars.o_opfile);
+		free(vars.line);
 		exit(EXIT_FAILURE); }
 	if (argument[0] == '-')
 	{i++;
@@ -67,6 +68,7 @@ int _atoi(char *argument, stack_t *stack, int line_count)
 			free(vars.args);
 			free_stack(stack);
 			closefile(vars.o_opfile);
+			free(vars.line);
 			exit(EXIT_FAILURE); }
 	}
 	return (n * neg);

@@ -13,11 +13,13 @@
  */
 char **strtok_alloc(char *line, ssize_t read)
 {
-	int c = 0, i;
+	int c = 0, i = 0;
 	char *tok_cpy, *tok = NULL, **arguments, *line2;
-(void)read;
-	if (line[strlen(line) - 1] == '\n')
-		line[strlen(line) - 1] = '\0';
+
+
+	if (read > 0 && line[read - 1] == '\n')
+		line[read - 1] = '\0';
+
 	line2 = strdup(line);
 	if (line2 == NULL)
 	{   _puts_std(2, "Error: malloc failed");
@@ -34,6 +36,7 @@ char **strtok_alloc(char *line, ssize_t read)
 	if (arguments == NULL)
 	{   _puts_std(2, "Error: malloc failed");
 		closefile(vars.o_opfile);
+		free(line);
 		exit(EXIT_FAILURE);
 	}
 	tok_cpy = strtok(line, " \t");
