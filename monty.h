@@ -44,6 +44,7 @@ typedef struct instruction_s
  * @args: pointer to pointer
  *@o_opfile: file stream
  *@line: pointer that conatin line readed from file (used by getline)
+ *@mode: the format of the data 'q' queue or 's' stack
  */
 typedef struct global_var_s
 {
@@ -51,6 +52,7 @@ int number;
 char *line;
 char **args;
 FILE *o_opfile;
+char mode;
 } globals_var;
 
 extern globals_var vars;
