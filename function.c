@@ -1,6 +1,6 @@
 #include "monty.h"
 
-globals_var vars;
+globals_var vars = {0, NULL, NULL};
 
 /**
  * closefile - function that close file stream.
