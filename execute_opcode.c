@@ -49,7 +49,7 @@ void execute_opcode(stack_t **stack, char *opcode, unsigned int line_number)
  */
 void push_func(stack_t **stack,  unsigned int line_number)
 {
-	stack_t *node;
+	stack_t *node, *tmp;
 
 	(void)line_number;
 	if (stack == NULL)
@@ -66,10 +66,20 @@ void push_func(stack_t **stack,  unsigned int line_number)
 	node->next = NULL;
 	if ((*stack) == NULL)
 		(*stack) = node;
-	else
+
+	else if (vars.mode == 's')
 	{ node->next = (*stack);
 		(*stack)->prev = node;
 		(*stack) = node; }
+	else if (vars.mode == 'q')
+	{
+	tmp = (*stack);
+	while (tmp->next)
+		tmp = tmp->next;
+
+	tmp->next = node;
+	node->prev = tmp;
+	}
 }
 
 /**
