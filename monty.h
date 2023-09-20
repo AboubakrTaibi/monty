@@ -7,7 +7,7 @@
 #include <errno.h>
 #include <fcntl.h>
 #include <string.h>
-#define BUF_SIZE 1024
+#define BUF_SIZE 100
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -43,10 +43,12 @@ typedef struct instruction_s
  * @number: integer number to add to stack
  * @args: pointer to pointer
  *@o_opfile: file stream
+ *@line: pointer that conatin line readed from file (used by getline)
  */
-typedef struct global_var
+typedef struct global_var_s
 {
 int number;
+char *line;
 char **args;
 FILE *o_opfile;
 } globals_var;
@@ -69,7 +71,7 @@ void pall_func(stack_t **stack, unsigned int line_number);
 void pint_func(stack_t **stack, unsigned int line_number);
 void pop_func(stack_t **stack, unsigned int line_number);
 char *_strdup(const char *str);
-void free_stack(stack_t *stack);
+void free_stack(stack_t **stack);
 
 
 

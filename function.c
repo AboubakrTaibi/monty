@@ -1,6 +1,6 @@
 #include "monty.h"
 
-globals_var vars;
+globals_var vars = {0, NULL, NULL, NULL};
 
 /**
  * closefile - function that close file stream.
@@ -26,25 +26,28 @@ void closefile(FILE *file)
 int main(int argc, char *argv[])
 {
 
-	char  *opfile, line[BUF_SIZE] = {'\0'};
+	char  *opfile = NULL, **args = NULL, *line = NULL;
 	ssize_t read = 0;
-	int line_count = 0, i;
+	size_t len = 0;
+	FILE *o_opfile = NULL;
+	int line_count = 0;
 	stack_t *stack = NULL;
-	(void)i;
 
 	if (argc != 2)
 	{ fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE); }
 
 	opfile = argv[1];
-	vars.o_opfile = fopen(opfile, "r");
+	o_opfile = fopen(opfile, "r");
+	vars.o_opfile = o_opfile;
 	if (vars.o_opfile == NULL)
 	{ fprintf(stderr, "Error: Can't open file %s\n", opfile);
 		exit(EXIT_FAILURE); }
-
-	while (fgets(line, sizeof(line), vars.o_opfile) != NULL)
+while ((read = getline(&line, &len, o_opfile)) != -1)
 	{   line_count++;
-		vars.args = strtok_alloc(line, read);
+		vars.line = line;
+		args = strtok_alloc(line, read);
+		vars.args = args;
 		if (!vars.args || vars.args[0][0] == '#' ||
 		(strcmp(vars.args[0], "nop") == 0))
 			{
@@ -53,11 +56,13 @@ int main(int argc, char *argv[])
 			continue; }
 		if (strcmp(vars.args[0], "push") == 0)
 			vars.number = _atoi(vars.args[1], stack, line_count);
-
 		execute_opcode(&stack, vars.args[0], line_count);
 		free(vars.args);
-	}
-	free_stack(stack);
+		free(line);
+		line = NULL; }
+	if (stack)
+	free_stack(&stack);
+	free(line);
 	closefile(vars.o_opfile);
 	return (0);
 }
