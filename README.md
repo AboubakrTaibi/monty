@@ -15,7 +15,16 @@ $ gcc -Wall -Werror -Wextra -pedantic -std=c89 *.c -o monty
 
 #### Run Monty with a Monty bytecode file:
 $ ./monty monty_bytecode.m
-<h1 style="color:purple;">Hello World</h1>
+```diff
+- text in red
++ text in green
+! text in orange
+# text in gray
+@@ text in purple (and bold)@@
+```
+```html
+   <h1 style="color:purple;">Hello World</h1>
+```
 #### Example: Simple Stack Operations
 - push 1
 - push 2
