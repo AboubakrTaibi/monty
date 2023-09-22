@@ -1,15 +1,5 @@
 
 # Monty: Stacks and Queues - LIFO, FIFO
-A very <span style='color: red;'>long</span> sentence.
-
-<html>
-<body>
-<p>Let’s keep it as a code block and not render it for once</p>
-A very <span style='color: red;'>long</span> sentence.
-<span style="color:red;">Ce texte est en rouge.</span>
-</body>
-</html>
-![Main](https://www.allaboutlean.com/wp-content/uploads/2022/10/FIFO-vs-LIFO.png)
 
 ## Introduction
 Monty is a minimalistic programming language that operates on a stack or queue of integers. It reads Monty bytecode files, interprets the commands, and executes them accordingly. The primary goal of this project is to provide a clear and concise implementation of Stacks and Queues, helping users grasp their functionality and use cases.
@@ -17,14 +7,17 @@ Monty is a minimalistic programming language that operates on a stack or queue o
 ## Getting Started
 
 #### Clone the Monty repository :
-$ git clone https://github.com/nisselhbb/monty.git
-
-#### Compile the Monty interpreter:
+```diff 
++$ git clone https://github.com/nisselhbb/monty.git
+```
+#### Compile the Monty interpreter: 
+```diff 
 +$ gcc -Wall -Werror -Wextra -pedantic -std=c89 *.c -o monty
-
+```
 #### Run Monty with a Monty bytecode file:
+```diff 
 +$ ./monty monty_bytecode.m
-
+```
 
 #### Example: Simple Stack Operations
 - push 1
@@ -43,6 +36,6 @@ $ git clone https://github.com/nisselhbb/monty.git
 - stack
 - queue
 
-## License ✔️
+## License✔️
 
 This project is licensed under the GNU General Public License (GPL)
