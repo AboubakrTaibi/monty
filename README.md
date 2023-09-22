@@ -1,15 +1,11 @@
-# hello
-<style>
-H1{color:Blue !important;}
-H2{color:DarkOrange !important;}
-p{color:Black !important;}
-</style>
 
 <style>H1{color:Blue;}</style>
 <style>H2{color:DarkOrange;}</style>
 <style>p{color:Black;}</style>
 
-# Monty: Stacks and Queues - LIFO, FIFO
+# Monty: Stacks and Queues - LIFO, FIFO[blue](#)
+# Monty: Stacks and Queues - LIFO, FIFO[blue]#
+# Monty: Stacks and Queues - LIFO, FIFO[blue]
 
 
 ## Introduction
