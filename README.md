@@ -3,11 +3,8 @@
 <style>H2{color:DarkOrange;}</style>
 <style>p{color:Black;}</style>
 
-# Monty: Stacks and Queues - LIFO, FIFO[blue](#)
-# Monty: Stacks and Queues - LIFO, FIFO[blue]#
-# Monty: Stacks and Queues - LIFO, FIFO[blue]
-
-
+# Monty: Stacks and Queues - LIFO, FIFO
+<span style="color:red;">Ce texte est en rouge.</span>
 ## Introduction
 Monty is a minimalistic programming language that operates on a stack or queue of integers. It reads Monty bytecode files, interprets the commands, and executes them accordingly. The primary goal of this project is to provide a clear and concise implementation of Stacks and Queues, helping users grasp their functionality and use cases.
 
