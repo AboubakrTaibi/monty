@@ -1,4 +1,5 @@
 
+<font size="+3">This text is larger.</font>
 ```diff
 + # Monty: Stacks and Queues - LIFO, FIFO
 
@@ -17,10 +18,6 @@ $ git clone https://github.com/nisselhbb/monty.git
 #### Run Monty with a Monty bytecode file:
 +$ ./monty monty_bytecode.m
 
-- text in red
-+ text in green
-! text in orange
-# text in gray
 @@ text in purple (and bold)@@
 ```
 
