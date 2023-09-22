@@ -1,6 +1,6 @@
 
 ```diff
--# Monty: Stacks and Queues - LIFO, FIFO
++ # Monty: Stacks and Queues - LIFO, FIFO
 
 
 @## Introduction
