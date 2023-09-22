@@ -8,13 +8,13 @@ Monty is a minimalistic programming language that operates on a stack or queue o
 ## Getting Started
 
 #### Clone the Monty repository :
-_$ git clone https://github.com/nisselhbb/monty.git
+$ git clone https://github.com/nisselhbb/monty.git
 
 #### Compile the Monty interpreter:
 $ gcc -Wall -Werror -Wextra -pedantic -std=c89 *.c -o monty
 
 #### Run Monty with a Monty bytecode file:
-_$ ./monty monty_bytecode.m
+$ ./monty monty_bytecode.m
 
 #### Example: Simple Stack Operations
 - push 1
