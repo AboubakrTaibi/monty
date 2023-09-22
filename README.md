@@ -17,13 +17,21 @@ _$ gcc -Wall -Werror -Wextra -pedantic -std=c89 *.c -o monty
 _$ ./monty monty_bytecode.m
 
 #### Example: Simple Stack Operations
-push 1
-push 2
-push 3
-pall
-pop
-pall
-
+- push 1
+- push 2
+- push 3
+- pall
+- pop
+- pall
+- pint
+- swap
+- add
+- div
+- mul
+- mod
+- sub
+- stack
+- queue
 ## License
 
 This project is licensed under the GNU General Public License (GPL)
